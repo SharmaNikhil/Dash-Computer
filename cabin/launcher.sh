@@ -1,15 +1,16 @@
 #!/bin/sh
 #launcher.sh
-#navigate to cabin code directory, start cabin.py
+#navigate to cabin code directory (/home/pi/cabin), start cabin.py
 
-cd /home/pi/cabin
+cd testfolder/
 ret=$?
-if [ ret -eq 0 ]
-	echo "Navigated to cabin directory"
-	echo "Launching cabin.py"
-	sudo python cabin.py
-else
+if [ $? -ne 0 ]; then
 	echo "Failed to navigate to cabin directory"
 	echo "Return was $ret"
 	echo "Exiting launcher.sh"
 	exit
+else	
+	echo "Navigated to cabin directory"
+	echo "Launching cabin.py"
+	sudo python cabin.py
+fi
